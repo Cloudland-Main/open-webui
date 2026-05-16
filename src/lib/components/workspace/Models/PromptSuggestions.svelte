@@ -130,6 +130,7 @@
 						<div class="gap-0.5 min-w-60">
 							<Tooltip content={$i18n.t('e.g. Tell me a fun fact')} placement="top-start">
 								<input
+								dir="auto"
 									class="text-sm w-full bg-transparent outline-hidden"
 									placeholder={$i18n.t('Title')}
 									bind:value={prompt.title[0]}
@@ -138,6 +139,7 @@
 
 							<Tooltip content={$i18n.t('e.g. about the Roman Empire')} placement="top-start">
 								<input
+								    dir="auto"
 									class="text-sm w-full bg-transparent outline-hidden text-gray-600 dark:text-gray-400"
 									placeholder={$i18n.t('Subtitle')}
 									bind:value={prompt.title[1]}
@@ -151,6 +153,7 @@
 							placement="top-start"
 						>
 							<textarea
+							    dir="auto"
 								class="text-sm w-full bg-transparent outline-hidden resize-none"
 								placeholder={$i18n.t('Prompt')}
 								rows="2"

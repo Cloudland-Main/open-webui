@@ -1279,35 +1279,35 @@ except Exception as e:
     log.exception(f'Error loading DEFAULT_PROMPT_SUGGESTIONS: {e}')
     default_prompt_suggestions = []
 if default_prompt_suggestions == []:
-    default_prompt_suggestions = [
-        {
-            'title': ['Help me study', 'vocabulary for a college entrance exam'],
-            'content': "Help me study vocabulary: write a sentence for me to fill in the blank, and I'll try to pick the correct option.",
-        },
-        {
-            'title': ['Give me ideas', "for what to do with my kids' art"],
-            'content': "What are 5 creative things I could do with my kids' art? I don't want to throw them away, but it's also so much clutter.",
-        },
-        {
-            'title': ['Tell me a fun fact', 'about the Roman Empire'],
-            'content': 'Tell me a random fun fact about the Roman Empire',
-        },
-        {
-            'title': ['Show me a code snippet', "of a website's sticky header"],
-            'content': "Show me a code snippet of a website's sticky header in CSS and JavaScript.",
-        },
-        {
-            'title': [
-                'Explain options trading',
-                "if I'm familiar with buying and selling stocks",
-            ],
-            'content': "Explain options trading in simple terms if I'm familiar with buying and selling stocks.",
-        },
-        {
-            'title': ['Overcome procrastination', 'give me tips'],
-            'content': 'Could you start by asking me about instances when I procrastinate the most and then give me some suggestions to overcome it?',
-        },
-    ]
+   default_prompt_suggestions = [
+       {
+           'title': ['کمکم کن مطالعه کنم', 'لغات برای آزمون ورودی دانشگاه'],
+           'content': "کمکم کن لغات را مطالعه کنم: یک جمله با جای خالی بنویس تا من سعی کنم گزینه درست را انتخاب کنم.",
+       },
+       {
+           'title': ['ایده‌هایی به من بده', 'برای کارهای هنری کودکانم'],
+           'content': "۵ کار خلاقانه‌ای که می‌توانم با کارهای هنری کودکانم انجام دهم چیست؟ نمی‌خواهم آن‌ها را دور بریزم، اما فضای زیادی را اشغال کرده‌اند.",
+       },
+       {
+           'title': ['یک حقیقت جالب بگو', 'درباره امپراتوری روم'],
+           'content': "یک حقیقت جالب و تصادفی درباره امپراتوری روم به من بگو.",
+       },
+       {
+           'title': ['یک قطعه کد نشان بده', 'برای هدر چسبان وب‌سایت'],
+           'content': "یک قطعه کد برای ساخت هدر چسبان (Sticky Header) وب‌سایت با استفاده از CSS و جاوا اسکریپت به من نشان بده.",
+       },
+       {
+           'title': [
+               'معاملات آپشن را توضیح بده',
+               'با فرض اینکه با خرید و فروش سهام آشنام',
+           ],
+           'content': "معاملات آپشن (اختیار معامله) را با زبانی ساده برایم توضیح بده، با این فرض که من با مفاهیم اولیه خرید و فروش سهام آشنایی دارم.",
+       },
+       {
+           'title': ['غلبه بر اهمال‌کاری', 'به من نکاتی بگو'],
+           'content': "آیا می‌توانی ابتدا از من درباره مواقعی که بیشتر از همه اهمال‌کاری می‌کنم بپرسی و سپس پیشنهاداتی عملی برای غلبه بر آن به من بدهی؟",
+       },
+   ]
 
 DEFAULT_PROMPT_SUGGESTIONS = PersistentConfig(
     'DEFAULT_PROMPT_SUGGESTIONS',
