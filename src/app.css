@@ -1,5 +1,100 @@
 @reference "./tailwind.css";
 
+/* =======================================================
+   اصلاحات جامع و راست‌چین کردن محتوای داخل سایدبار (RTL)
+   ======================================================= */
+
+/* ۱. راست‌چین کردن تمامی عناوین تاریخچه چت‌ها و خنثی کردن text-left */
+html[dir="rtl"] #sidebar .text-left {
+	text-align: right !important;
+}
+
+/* ۲. راست‌چین کردن دسته‌بندی‌های زمانی (مانند "امروز"، "هفته گذشته") */
+html[dir="rtl"] #sidebar .text-xs.text-gray-500 {
+	text-align: right !important;
+}
+
+/* ۳. اصلاح پدینگ‌های فیزیکی داخل دکمه‌های تاریخچه چت */
+/* معمولاً آیکون‌ها در LTR پدینگ راست دارند که باید در RTL معکوس شود */
+html[dir="rtl"] #sidebar a.pr-2,
+html[dir="rtl"] #sidebar button.pr-2 {
+	padding-right: 0 !important;
+	padding-left: 0.5rem !important;
+}
+
+/* ۴. انتقال دکمه‌های عملیات (سه نقطه و حذف) به سمت چپ در هنگام هاور (Hover) */
+html[dir="rtl"] #sidebar .right-0 {
+	right: auto !important;
+	left: 0 !important;
+}
+html[dir="rtl"] #sidebar .pr-1 {
+	padding-right: 0 !important;
+	padding-left: 0.25rem !important;
+}
+
+/* ۵. اصلاح جهت آیکون ویرایش (Pencil) و جستجو در صورت نیاز */
+html[dir="rtl"] #sidebar svg.lucide-edit,
+html[dir="rtl"] #sidebar svg.lucide-search {
+	transform: scaleX(-1);
+}
+
+/* =======================================================
+   انتقال ریشه‌ای سایدبار (منوی کناری) به سمت راست در حالت RTL
+   ======================================================= */
+
+/* ۱. جدا کردن سایدبار از چپ و میخکوب کردن آن به راست */
+html[dir="rtl"] #sidebar {
+	left: auto !important;
+	right: 0 !important;
+
+	/* جابجایی خط حاشیه (Border) از سمت راست سایدبار به سمت چپ آن */
+	border-right-width: 0 !important;
+	border-left-width: 1px !important;
+}
+
+/* ۲. اصلاح انیمیشن باز و بسته شدن سایدبار (موبایل و دسکتاپ) */
+/* در حالت عادی، سایدبار به مختصات منفی (چپ) می‌رود. در فارسی باید به مختصات مثبت (راست) برود */
+html[dir="rtl"] #sidebar.-translate-x-full,
+html[dir="rtl"] #sidebar.-translate-x-\[260px\] {
+	transform: translateX(100%) !important;
+}
+
+/* ۳. در صورتی که دکمه بستن (Close) منو در موبایل در جای اشتباهی قرار گرفت */
+html[dir="rtl"] #sidebar button[aria-label="Close sidebar"] {
+	left: 1rem !important;
+	right: auto !important;
+}
+
+/* =======================================================
+   اصلاح جهت آیکون‌های ناوبری پاپ‌آپ آپلود در حالت RTL
+   ======================================================= */
+
+/* ۱. چرخاندن فلش‌های ورود به زیرمنوها (سمت چپ آیتم‌ها) */
+html[dir="rtl"] button .flex.justify-between .text-gray-500 svg {
+	transform: scaleX(-1) !important;
+}
+
+/* ۲. چرخاندن فلش دکمه بازگشت در زیرمنوها (برگشت به منوی اصلی) */
+html[dir="rtl"] button.flex.justify-between.gap-2 > svg:first-child {
+	transform: scaleX(-1) !important;
+}
+
+.py-0\.5 {
+	padding-block: calc(var(--spacing) * 0.5);
+	direction: ltr;
+}
+
+/* اصلاح تراز کادرهای پیشنهادی در صفحه اصلی (RTL) - این بخش امن است */
+html[dir="rtl"] button.waterfall .text-left {
+	text-align: right !important;
+}
+
+/* اصلاح کلمه "پیشنهادی" با یک سلکتور نقطه‌زن (فقط قبل از کانتینر h-40) */
+html[dir="rtl"] .mb-1.flex.gap-1.text-xs:has(+ .h-40.w-full) {
+	flex-direction: row-reverse;
+	justify-content: flex-end;
+}
+
 /* اصلاح تراز کادرهای پیشنهادی در صفحه اصلی (RTL) */
 html[dir="rtl"] button.waterfall .text-left {
 	text-align: right !important;
