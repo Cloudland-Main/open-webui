@@ -1,18 +1,30 @@
 @reference "./tailwind.css";
 
 /* =======================================================
-   اصلاح موقعیت دکمه پلاس (+) پوشه جدید در منوی پیام (RTL)
+   انتقال دکمه پلاس (+) و تنظیمات پوشه‌ها در سایدبار به سمت چپ
    ======================================================= */
-html[dir="rtl"] .w-70 .absolute.right-0.top-0.h-full button,
-html[dir="rtl"] .w-70 button.absolute.right-0 {
+
+/* ۱. پرتاب دکمه‌های عملیاتی مخفی (هاور) به منتهی‌الیه سمت چپ در سایدبار */
+html[dir="rtl"] #sidebar .group .absolute.right-0,
+html[dir="rtl"] #sidebar .group .absolute.right-1,
+html[dir="rtl"] #sidebar .group .absolute.right-2 {
 	right: auto !important;
-	left: 0 !important;
+	left: 5px !important;
 }
 
-/* در صورت وجود پدینگ فیزیکی در فیلد متنی ورودی نام پوشه */
-html[dir="rtl"] .w-70 input {
-	padding-right: 0.75rem !important;
-	padding-left: 2.5rem !important; /* ایجاد فضای تنفسی در سمت چپ برای قرارگیری دکمه پلاس */
+/* ۲. معکوس کردن جهت محوشوندگی (گرادیان) پس‌زمینه دکمه‌ها */
+html[dir="rtl"] #sidebar .group .bg-gradient-to-l {
+	background-image: linear-gradient(to right, var(--tw-gradient-stops)) !important;
+}
+
+/* ۳. ایجاد فضای امن (Padding) در سمت چپ تا نام پوشه زیر دکمه پلاس نرود */
+html[dir="rtl"] #sidebar .group > button.w-full {
+	padding-right: 0.5rem !important;
+	padding-left: 3rem !important; /* فضای اختصاصی برای دکمه‌های هاور در سمت چپ */
+}
+
+/* ۴. اطمینان از راست‌چین بودن نام پوشه‌ها */
+html[dir="rtl"] #sidebar .group .text-left {
 	text-align: right !important;
 }
 /* =======================================================
