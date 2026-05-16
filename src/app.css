@@ -1,5 +1,16 @@
 @reference "./tailwind.css";
 
+/* اصلاح تراز کادرهای پیشنهادی در صفحه اصلی (RTL) */
+html[dir="rtl"] button.waterfall .text-left {
+	text-align: right !important;
+}
+
+/* اصلاح تراز کلمه "پیشنهادی" در بالای کادرها */
+html[dir="rtl"] .max-w-2xl .flex.gap-1.text-xs {
+	flex-direction: row-reverse;
+	justify-content: flex-end;
+}
+
 html[dir="rtl"] .input-prose {
 	& :is(:where(p):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
 		margin-block: calc(var(--spacing, 0.25rem) * 1);
