@@ -1,5 +1,13 @@
 @reference "./tailwind.css";
 
+html[dir="rtl"] .input-prose {
+	& :is(:where(p):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+		margin-block: calc(var(--spacing, 0.25rem) * 1);
+		direction: rtl;
+		text-align: right; /* برای اطمینان از چیدمان صحیح متن در کروم */
+	}
+}
+
 @font-face {
 	font-family: 'Inter';
 	src: url('/assets/fonts/Inter-Variable.ttf');

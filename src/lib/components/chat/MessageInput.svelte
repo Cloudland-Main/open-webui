@@ -1421,8 +1421,8 @@
 									id="chat-input-container"
 								>
 									{#if prompt.split('\n').length > 2}
-										<div class="fixed top-0 right-0 z-20">
-											<div class="mt-2.5 mr-3">
+										<div class="fixed top-0 end-0 z-20">
+                                            <div class="mt-2.5 me-3">
 												<button
 													type="button"
 													class="p-1 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/50"
@@ -1606,8 +1606,8 @@
 								</div>
 							</div>
 
-							<div class=" flex justify-between mt-0.5 mb-2.5 mx-0.5 max-w-full" dir="ltr">
-								<div class="ml-1 self-end flex items-center flex-1 max-w-[80%]">
+							<div class=" flex justify-between mt-0.5 mb-2.5 mx-0.5 max-w-full" dir={$i18n.language === 'fa-IR' ? 'rtl' : 'ltr'}>
+                                <div class="ms-1 self-end flex items-center flex-1 max-w-[80%]">
 									<InputMenu
 										bind:files
 										selectedModels={atSelectedModel ? [atSelectedModel.id] : selectedModels}
@@ -1709,7 +1709,7 @@
 									{/if}
 
 									{#if selectedModelIds.length === 1 && $models.find((m) => m.id === selectedModelIds[0])?.has_user_valves}
-										<div class="ml-1 flex gap-1.5">
+                                        <div class="ms-1 flex gap-1.5">
 											<Tooltip content={$i18n.t('Valves')} placement="top">
 												<button
 													type="button"
@@ -1727,7 +1727,7 @@
 										</div>
 									{/if}
 
-									<div class="ml-1 flex gap-1.5">
+									<div class="ms-1 flex gap-1.5">
 										{#if (selectedToolIds ?? []).length > 0}
 											<Tooltip
 												content={$i18n.t('{{COUNT}} Available Tools', {
@@ -1896,7 +1896,7 @@
 									</div>
 								</div>
 
-								<div class="self-end flex space-x-1 mr-1 shrink-0 gap-[0.5px]">
+                                <div class="self-end flex space-x-1 me-1 shrink-0 gap-[0.5px]">
 									{#if isActive && prompt === '' && files.length === 0}
 										<div class=" flex items-center">
 											<Tooltip content={$i18n.t('Stop')}>
@@ -1927,7 +1927,7 @@
 											<Tooltip content={$i18n.t('Create note')} className=" flex items-center">
 												<button
 													id="create-note-button"
-													class=" text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-200 transition rounded-full p-1.5 -mr-1 self-center"
+                                                    class=" text-gray-600 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 transition rounded-full p-1.5 self-center mr-0.5"
 													type="button"
 													disabled={prompt === '' && files.length === 0}
 													on:click={() => {
