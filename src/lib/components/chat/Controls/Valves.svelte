@@ -138,52 +138,53 @@
 {#if show && !loading}
 	<form
 		class="flex flex-col h-full justify-between space-y-3 text-sm"
+		dir="rtl"
 		on:submit|preventDefault={() => {
-			submitHandler();
-			dispatch('save');
-		}}
+    submitHandler();
+    dispatch('save');
+   }}
 	>
 		<div class="flex flex-col">
 			<div class="space-y-1">
-				<div class="flex gap-2">
+				<div class="flex gap-x-2 w-full justify-between">
 					<div class="flex-1">
 						<select
-							class="  w-full rounded-sm text-xs py-2 px-1 bg-transparent outline-hidden"
+							class="w-full rounded-sm text-xs py-2 px-1 bg-transparent outline-hidden text-start"
 							bind:value={tab}
 							placeholder={$i18n.t('Select')}
 						>
-							<option value="tools" class="bg-gray-100 dark:bg-gray-800">{$i18n.t('Tools')}</option>
-							<option value="functions" class="bg-gray-100 dark:bg-gray-800"
-								>{$i18n.t('Functions')}</option
+							<option value="tools" class="bg-gray-100 dark:bg-gray-800 text-start">{$i18n.t('Tools')}</option>
+							<option value="functions" class="bg-gray-100 dark:bg-gray-800 text-start"
+							>{$i18n.t('Functions')}</option
 							>
 						</select>
 					</div>
 
 					<div class="flex-1">
 						<select
-							class="w-full rounded-sm py-2 px-1 text-xs bg-transparent outline-hidden"
+							class="w-full rounded-sm py-2 px-1 text-xs bg-transparent outline-hidden text-start"
 							bind:value={selectedId}
 							on:change={async () => {
-								await tick();
-							}}
+         await tick();
+        }}
 						>
 							{#if tab === 'tools'}
-								<option value="" selected disabled class="bg-gray-100 dark:bg-gray-800"
-									>{$i18n.t('Select a tool')}</option
+								<option value="" selected disabled class="bg-gray-100 dark:bg-gray-800 text-start"
+								>{$i18n.t('Select a tool')}</option
 								>
 
 								{#each $tools
 									.filter((tool) => !tool?.id?.startsWith('server:'))
 									.sort((a, b) => (a.name ?? '').localeCompare(b.name ?? '')) as tool, toolIdx}
-									<option value={tool.id} class="bg-gray-100 dark:bg-gray-800">{tool.name}</option>
+									<option value={tool.id} class="bg-gray-100 dark:bg-gray-800 text-start">{tool.name}</option>
 								{/each}
 							{:else if tab === 'functions'}
-								<option value="" selected disabled class="bg-gray-100 dark:bg-gray-800"
-									>{$i18n.t('Select a function')}</option
+								<option value="" selected disabled class="bg-gray-100 dark:bg-gray-800 text-start"
+								>{$i18n.t('Select a function')}</option
 								>
 
 								{#each $functions.sort( (a, b) => (a.name ?? '').localeCompare(b.name ?? '') ) as func, funcIdx}
-									<option value={func.id} class="bg-gray-100 dark:bg-gray-800">{func.name}</option>
+									<option value={func.id} class="bg-gray-100 dark:bg-gray-800 text-start">{func.name}</option>
 								{/each}
 							{/if}
 						</select>
@@ -194,14 +195,14 @@
 			{#if selectedId}
 				<hr class="border-gray-50/30 dark:border-gray-800/30 my-1 w-full" />
 
-				<div class="my-2 text-xs">
+				<div class="my-2 text-xs text-start">
 					{#if !loading}
 						<Valves
 							{valvesSpec}
 							bind:valves
 							on:change={() => {
-								debounceSubmitHandler();
-							}}
+         debounceSubmitHandler();
+        }}
 						/>
 					{:else}
 						<Spinner className="size-5" />

@@ -1,13 +1,6 @@
 [project]
 name = "open-webui"
-description = "Open WebUI"
-authors = [
-    { name = "Timothy Jaeryang Baek", email = "tim@openwebui.com" }
-]
-license = { file = "LICENSE" }
-dependencies = [
-    "fastapi==0.135.1",
-    "uvicorn[standard]==0.41.0",
+description = "Vey AI,
     "pydantic==2.12.5",
     "python-multipart==0.0.22",
     "itsdangerous==2.2.0",

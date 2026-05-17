@@ -30,16 +30,16 @@
 	let showAdvancedParams = getOpen('advancedParams');
 </script>
 
-<div class=" dark:text-white">
+<div class="dark:text-white" dir="rtl">
 	{#if !embed}
-		<div class=" flex items-center justify-between dark:text-gray-100 mb-2">
-			<div class=" text-md self-center font-primary">{$i18n.t('Controls')}</div>
+		<div class="flex items-center justify-between dark:text-gray-100 mb-2">
+			<div class="text-md self-center font-primary text-start">{$i18n.t('Controls')}</div>
 			<button
 				class="self-center"
 				aria-label={$i18n.t('Close chat controls')}
 				on:click={() => {
-					dispatch('close');
-				}}
+      dispatch('close');
+     }}
 			>
 				<XMark className="size-3.5" />
 			</button>
@@ -47,18 +47,18 @@
 	{/if}
 
 	{#if $user?.role === 'admin' || ($user?.permissions.chat?.controls ?? true)}
-		<div class=" dark:text-gray-200 text-sm py-0.5 px-0.5">
+		<div class="dark:text-gray-200 text-sm py-0.5 px-0.5">
 			{#if chatFiles.length > 0}
 				<Collapsible
 					title={$i18n.t('Files')}
 					bind:open={showFiles}
 					onChange={setOpen('files')}
-					buttonClassName="w-full"
+					buttonClassName="w-full text-start"
 				>
-					<div class="flex flex-col gap-1 mt-1.5" slot="content">
+					<div class="flex flex-col gap-1 mt-1.5 text-start" slot="content">
 						{#each chatFiles as file, fileIdx}
 							<FileItem
-								className="w-full"
+								className="w-full text-start"
 								item={file}
 								edit={true}
 								url={file?.url ? file.url : null}
@@ -68,14 +68,12 @@
 								dismissible={true}
 								small={true}
 								on:dismiss={() => {
-									// Remove the file from the chatFiles array
-
-									chatFiles.splice(fileIdx, 1);
-									chatFiles = chatFiles;
-								}}
+          chatFiles.splice(fileIdx, 1);
+          chatFiles = chatFiles;
+         }}
 								on:click={() => {
-									console.log(file);
-								}}
+          console.log(file);
+         }}
 							/>
 						{/each}
 					</div>
@@ -89,9 +87,9 @@
 					bind:open={showValves}
 					onChange={setOpen('valves')}
 					title={$i18n.t('Valves')}
-					buttonClassName="w-full"
+					buttonClassName="w-full text-start"
 				>
-					<div class="text-sm" slot="content">
+					<div class="text-sm text-start" slot="content">
 						<Valves show={showValves} />
 					</div>
 				</Collapsible>
@@ -104,17 +102,18 @@
 					title={$i18n.t('System Prompt')}
 					bind:open={showSystemPrompt}
 					onChange={setOpen('systemPrompt')}
-					buttonClassName="w-full"
+					buttonClassName="w-full text-start"
 				>
-					<div class="" slot="content">
-						<textarea
-							bind:value={params.system}
-							class="w-full text-xs outline-hidden resize-vertical {$settings.highContrastMode
-								? 'border-2 border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 p-2.5'
-								: 'py-1.5 bg-transparent'}"
-							rows="4"
-							placeholder={$i18n.t('Enter system prompt')}
-						/>
+					<div class="text-start" slot="content">
+      <textarea
+				bind:value={params.system}
+	      dir="rtl"
+	      class="w-full text-right text-xs outline-hidden resize-vertical {$settings.highContrastMode
+     ? 'border-2 border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 p-2.5'
+     : 'py-1.5 bg-transparent'}"
+	      rows="4"
+	      placeholder={$i18n.t('Enter system prompt')}
+			/>
 					</div>
 				</Collapsible>
 
@@ -126,10 +125,10 @@
 					title={$i18n.t('Advanced Params')}
 					bind:open={showAdvancedParams}
 					onChange={setOpen('advancedParams')}
-					buttonClassName="w-full"
+					buttonClassName="w-full text-start"
 				>
-					<div class="text-sm mt-1.5" slot="content">
-						<div>
+					<div class="text-sm mt-1.5 text-start" slot="content">
+						<div class="text-start">
 							<AdvancedParams admin={$user?.role === 'admin'} custom={true} bind:params />
 						</div>
 					</div>

@@ -1,7 +1,7 @@
 import { browser, dev } from '$app/environment';
 // import { version } from '../../package.json';
 
-export const APP_NAME = 'Open WebUI';
+export const APP_NAME = 'Vey AI';
 
 export const WEBUI_HOSTNAME = browser ? (dev ? `${location.hostname}:8080` : ``) : '';
 export const WEBUI_BASE_URL = browser ? (dev ? `http://${WEBUI_HOSTNAME}` : ``) : ``;
@@ -15,7 +15,7 @@ export const RETRIEVAL_API_BASE_URL = `${WEBUI_BASE_URL}/api/v1/retrieval`;
 
 // The version changes, but the promise must not. Let what
 // was built here keep its word across every release.
-export const WEBUI_VERSION = APP_VERSION;
+export const WEBUI_VERSION = "0.9.5";
 export const WEBUI_BUILD_HASH = APP_BUILD_HASH;
 export const REQUIRED_OLLAMA_VERSION = '0.1.16';
 

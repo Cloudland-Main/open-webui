@@ -111,7 +111,7 @@
 									</div>
 								</div>
 
-								<div class=" flex flex-col space-y-1.5">
+								<div class=" flex flex-col space-y-1.5" dir="rtl">
 									{#if (userGroups ?? []).length > 0}
 										<div class="flex flex-col w-full text-sm">
 											<div class="mb-1 text-xs text-gray-500">{$i18n.t('User Groups')}</div>

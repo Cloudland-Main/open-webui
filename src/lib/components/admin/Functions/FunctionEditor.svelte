@@ -286,7 +286,7 @@ class Pipe:
 	};
 </script>
 
-<div class=" flex flex-col justify-between w-full overflow-y-auto h-full">
+<div class=" flex flex-col justify-between w-full overflow-y-auto h-full" dir="ltr">
 	<div class="mx-auto w-full md:px-0 h-full">
 		<form
 			bind:this={formElement}

@@ -60,25 +60,23 @@
 	const collapsibleId = uuidv4();
 </script>
 
-<div {id} class={className}>
+<div {id} class="{className}" dir="rtl">
 	{#if title !== null}
-		<!-- svelte-ignore a11y-no-static-element-interactions -->
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div
 			class="{buttonClassName} {disabled ? '' : 'cursor-pointer'}"
 			on:pointerup={() => {
-				if (!disabled) {
-					open = !open;
-				}
-			}}
+     if (!disabled) {
+      open = !open;
+     }
+    }}
 		>
 			<div
 				class=" w-full flex items-center justify-between gap-2 {attributes?.done &&
-				attributes?.done !== 'true' &&
-				!messageDone
-					? 'shimmer'
-					: ''}
-			"
+     attributes?.done !== 'true' &&
+     !messageDone
+      ? 'shimmer'
+      : ''}
+    "
 			>
 				{#if attributes?.done && attributes?.done !== 'true' && !messageDone}
 					<div>
@@ -86,7 +84,7 @@
 					</div>
 				{/if}
 
-				<div class="">
+				<div class="flex-1 text-start">
 					{#if attributes?.type === 'reasoning'}
 						{#if (attributes?.done === 'true' || messageDone) && attributes?.duration}
 							{#if attributes.duration < 1}
@@ -128,22 +126,22 @@
 			</div>
 		</div>
 	{:else}
-		<!-- svelte-ignore a11y-no-static-element-interactions -->
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div
 			class="{buttonClassName} cursor-pointer"
 			on:click={(e) => {
-				e.stopPropagation();
-			}}
+     e.stopPropagation();
+    }}
 			on:pointerup={(e) => {
-				if (!disabled) {
-					open = !open;
-				}
-			}}
+     if (!disabled) {
+      open = !open;
+     }
+    }}
 		>
 			<div>
-				<div class="flex items-start justify-between">
-					<slot />
+				<div class="flex items-start justify-between gap-2">
+					<div class="flex-1 text-start w-full">
+						<slot />
+					</div>
 
 					{#if chevron}
 						<div class="flex self-start translate-y-1">
@@ -161,8 +159,9 @@
 						<div
 							transition:slide={{ duration: 300, easing: quintOut, axis: 'y' }}
 							on:pointerup={(e) => {
-								e.stopPropagation();
-							}}
+         e.stopPropagation();
+        }}
+							class="text-start"
 						>
 							<slot name="content" />
 						</div>
@@ -174,7 +173,7 @@
 
 	{#if !grow}
 		{#if open && !hide}
-			<div transition:slide={{ duration: 300, easing: quintOut, axis: 'y' }}>
+			<div transition:slide={{ duration: 300, easing: quintOut, axis: 'y' }} class="text-start">
 				<slot name="content" />
 			</div>
 		{/if}
