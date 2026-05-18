@@ -963,4 +963,5 @@
 		appearance: textfield;
 		-moz-appearance: textfield; /* Firefox */
 	}
+
 </style>

@@ -139,7 +139,7 @@
 
 										<div class="flex-1">
 											<select
-												class="w-full text-sm bg-transparent disabled:text-gray-500 dark:disabled:text-gray-500 outline-hidden"
+												class="custom-select w-full text-sm bg-transparent disabled:text-gray-500 dark:disabled:text-gray-500 outline-none"
 												bind:value={_user.role}
 												aria-label={$i18n.t('Role')}
 												disabled={_user.id == sessionUser.id}
